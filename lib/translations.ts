@@ -98,6 +98,16 @@ export const translations = {
         ],
       },
     },
+    // Partners Section
+    partners: {
+      subtitle: "Trusted By",
+      title: "Our Partners",
+      description:
+        "We collaborate with industry leaders to deliver exceptional results",
+      indicator1: "500+ Projects Delivered",
+      indicator2: "15+ Years Partnership",
+      indicator3: "99.8% Quality Rate",
+    },
     // CTA Section
     cta: {
       title: "Ready to Start Your Project?",
@@ -408,6 +418,16 @@ export const translations = {
           { name: "Madhësia Min e Veçorisë", spec: "0.5× trashësia materialit" },
         ],
       },
+    },
+    // Partners Section
+    partners: {
+      subtitle: "Të Besuar Nga",
+      title: "Partnerët Tanë",
+      description:
+        "Ne bashkëpunojmë me liderë të industrisë për të ofruar rezultate të jashtëzakonshme",
+      indicator1: "500+ Projekte të Përfunduara",
+      indicator2: "15+ Vite Partneritet",
+      indicator3: "99.8% Normë Cilësie",
     },
     // CTA Section
     cta: {
@@ -720,6 +740,16 @@ export const translations = {
         ],
       },
     },
+    // Partners Section
+    partners: {
+      subtitle: "Vertraut Von",
+      title: "Unsere Partner",
+      description:
+        "Wir arbeiten mit Branchenführern zusammen, um außergewöhnliche Ergebnisse zu liefern",
+      indicator1: "500+ Abgeschlossene Projekte",
+      indicator2: "15+ Jahre Partnerschaft",
+      indicator3: "99,8% Qualitätsrate",
+    },
     // CTA Section
     cta: {
       title: "Bereit Ihr Projekt zu Starten?",
@@ -936,4 +966,4 @@ export const translations = {
   },
 } as const;
 
-export type Translations = typeof translations.en;
+export type Translations = (typeof translations)[Language];
