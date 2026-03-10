@@ -108,12 +108,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:info@metaltronix.com"
+                <Link
+                  href="/contact"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  info@metaltronix.com
-                </a>
+                  metal.tronixx@gmail.com
+                </Link>
               </li>
             </ul>
           </div>
@@ -125,10 +125,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <span className="text-xs text-muted-foreground">
-              ISO 9001:2015 Certified
-            </span>
-            <span className="text-xs text-muted-foreground">
-              AS9100D Compliant
+              RT
             </span>
           </div>
         </div>

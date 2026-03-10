@@ -11,10 +11,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-const languages: { code: Language; label: string; flag: string }[] = [
-  { code: "en", label: "English", flag: "🇺🇸" },
-  { code: "sq", label: "Shqip", flag: "🇦🇱" },
-  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+// const languages: { code: Language; label: string; flag: string }[] = [
+//   { code: "en", label: "English", flag: "🇺🇸" },
+//   { code: "sq", label: "Shqip", flag: "🇦🇱" },
+//   { code: "de", label: "Deutsch", flag: "🇩🇪" },
+// ];
+
+const languages: { code: Language; label: string}[] = [
+  { code: "en", label: "English" },
+  { code: "sq", label: "Shqip"},
+  { code: "de", label: "Deutsch"},
 ];
 
 export function LanguageSwitcher() {
@@ -31,7 +37,6 @@ export function LanguageSwitcher() {
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
         >
           <Globe className="h-4 w-4" />
-          <span className="text-sm">{currentLang?.flag}</span>
           <span className="hidden sm:inline text-sm">{currentLang?.label}</span>
         </Button>
       </DropdownMenuTrigger>
@@ -44,7 +49,6 @@ export function LanguageSwitcher() {
               language === lang.code ? "bg-secondary" : ""
             }`}
           >
-            <span>{lang.flag}</span>
             <span>{lang.label}</span>
           </DropdownMenuItem>
         ))}
