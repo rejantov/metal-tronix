@@ -34,7 +34,7 @@ export default function HistoryPage() {
               </p>
               <div className="mt-8 flex flex-wrap gap-8">
                 <div className="p-4 rounded-xl bg-gradient-to-br from-card to-primary/5 border border-primary/20">
-                  <span className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">37+</span>
+                  <span className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">4+</span>
                   <p className="text-sm text-muted-foreground mt-1">
                     Years in Business
                   </p>

@@ -43,7 +43,7 @@ export async function POST(request: Request) {
       "small": "Small Run (6-50 pieces)",
       "medium": "Medium Run (51-500 pieces)",
       "production": "Production (500+ pieces)",
-      "kanban": "Kanban / Blanket Order",
+      "Rate Production": "Rate Production / Blanket Order",
     };
 
     // Build styled HTML email
