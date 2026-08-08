@@ -94,17 +94,24 @@ export function Footer() {
             </h4>
             <ul className="space-y-3">
               <li className="text-sm text-muted-foreground">
-                1234 Industrial Parkway
+                St. Loro Boriçi
               </li>
               <li className="text-sm text-muted-foreground">
-                Manufacturing District
+                Prishtinë/Kosovo, 10000
               </li>
               <li>
                 <a
                   href="tel:+15551234567"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  (555) 123-4567
+                  +383 44 169 716
+                </a>
+                <br />
+                <a
+                  href="tel:+15551234567"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  +383 48 288 219
                 </a>
               </li>
               <li>

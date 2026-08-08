@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,9 +18,13 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-sm bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">M</span>
-            </div>
+            <Image
+              src="/metal-tronix-3.png"
+              alt="Metal Tronix"
+              width={40}
+              height={40}
+              className="rounded-sm"
+            />
             <span className="text-xl font-bold tracking-tight text-foreground">
               Metal Tronix
             </span>

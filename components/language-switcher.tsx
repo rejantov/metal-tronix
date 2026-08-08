@@ -11,16 +11,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
-// const languages: { code: Language; label: string; flag: string }[] = [
-//   { code: "en", label: "English", flag: "🇺🇸" },
-//   { code: "sq", label: "Shqip", flag: "🇦🇱" },
-//   { code: "de", label: "Deutsch", flag: "🇩🇪" },
-// ];
-
-const languages: { code: Language; label: string}[] = [
-  { code: "en", label: "English" },
-  { code: "sq", label: "Shqip"},
-  { code: "de", label: "Deutsch"},
+const languages: { code: Language; label: string; flag: string }[] = [
+  { code: "en", label: "English", flag: "🇺🇸" },
+  { code: "sq", label: "Shqip", flag: "🇦🇱" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
 ];
 
 export function LanguageSwitcher() {
@@ -50,6 +44,7 @@ export function LanguageSwitcher() {
             }`}
           >
             <span>{lang.label}</span>
+            <span>{lang.flag}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

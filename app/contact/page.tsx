@@ -65,11 +65,19 @@ export default function ContactPage() {
                       <div>
                         <p className="font-medium text-foreground">{t.contact.info.phone.label}</p>
                         <a
-                          href="tel:+15551234567"
-                          className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                          href={`tel:${t.contact.info.phone.value.replace(/[\s\-\(\)]/g, "")}`}
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors block"
                         >
                           {t.contact.info.phone.value}
                         </a>
+                        {t.contact.info.phone.value1 && (
+                          <a
+                            href={`tel:${t.contact.info.phone.value1.replace(/[\s\-\(\)]/g, "")}`}
+                            className="text-sm text-muted-foreground hover:text-primary transition-colors block"
+                          >
+                            {t.contact.info.phone.value1}
+                          </a>
+                        )}
                       </div>
                     </div>
 
@@ -80,7 +88,7 @@ export default function ContactPage() {
                       <div>
                         <p className="font-medium text-foreground">{t.contact.info.email.label}</p>
                         <a
-                          href="mailto:quotes@metaltronix.com"
+                          href="mailto:metal.tronixx@gmail.com"
                           className="text-sm text-muted-foreground hover:text-primary transition-colors"
                         >
                           {t.contact.info.email.value}
