@@ -51,12 +51,14 @@ export default function AdminPage() {
       {/* Tab Navigation */}
       <div className="print-hide border-b border-border bg-card/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex">
+          {/* Five tabs no longer fit a phone, so the strip scrolls sideways
+              on its own instead of widening the page. */}
+          <div className="flex overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => setActiveTab(tab.key)}
-                className={`px-5 py-4 text-sm font-medium border-b-2 transition-colors ${
+                className={`shrink-0 whitespace-nowrap px-4 sm:px-5 py-4 text-sm font-medium border-b-2 transition-colors ${
                   activeTab === tab.key
                     ? "border-primary text-primary"
                     : "border-transparent text-muted-foreground hover:text-foreground hover:border-border"

@@ -10,7 +10,8 @@ import {
   computeTotals,
   emptyItem,
   formatMoney,
-  generateReceiptNo,
+  nextReceiptNo,
+  receiptPeriod,
   num,
   uniformTaxRate,
   type ReceiptItem,
@@ -39,6 +40,23 @@ interface HeaderForm {
   due_date: string;
   issued_by: string;
   type_of_goods: string;
+}
+
+/**
+ * The next free number for the month the receipt is dated in. Fixed-width
+ * sequences make the descending text sort match the numeric one, so the first
+ * row back is the highest issued that month.
+ */
+async function numberForDate(isoDate: string): Promise<string> {
+  const period = receiptPeriod(isoDate);
+  const { data } = await supabase
+    .from("receipts")
+    .select("receipt_no")
+    .like("receipt_no", `${period}%`)
+    .order("receipt_no", { ascending: false })
+    .limit(1);
+
+  return nextReceiptNo(period, data?.[0]?.receipt_no ?? null);
 }
 
 const emptyHeader: HeaderForm = {
@@ -188,8 +206,9 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
     if (receiptId) {
       loadReceipt(receiptId);
     } else {
-      setReceiptNo(generateReceiptNo());
-      setHeader((h) => ({ ...h, issue_date: new Date().toISOString().slice(0, 10) }));
+      const today = new Date().toISOString().slice(0, 10);
+      setHeader((h) => ({ ...h, issue_date: today }));
+      numberForDate(today).then(setReceiptNo);
     }
   }, [receiptId]);
 
@@ -260,6 +279,20 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
   const setField = (key: keyof HeaderForm, value: string) =>
     setHeader((prev) => ({ ...prev, [key]: value }));
 
+  /**
+   * The number encodes the month, so moving the date to another month has to
+   * re-issue it. Only for receipts that have not been saved yet — renumbering
+   * one already handed to a customer would break the register.
+   */
+  const setIssueDate = (value: string) => {
+    setField("issue_date", value);
+    if (receiptId || !value) return;
+    if (header.issue_date && receiptPeriod(value) === receiptPeriod(header.issue_date)) {
+      return;
+    }
+    numberForDate(value).then(setReceiptNo);
+  };
+
   const setItemField = (index: number, key: keyof ReceiptItem, value: string) =>
     setItems((prev) =>
       prev.map((item, i) =>
@@ -314,8 +347,8 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
           .eq("id", id);
         if (updateError) throw updateError;
       } else {
-        // Nine random digits practically never collide, but if the unique
-        // constraint ever rejects one, roll a new number instead of failing.
+        // If someone else claimed this month's number since the form opened,
+        // take the next one in the same month rather than failing the save.
         let attempt = payload;
         for (let tries = 0; ; tries++) {
           const { data, error: insertError } = await supabase
@@ -331,7 +364,8 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
           }
           // 23505 = unique_violation on receipt_no
           if (insertError.code !== "23505" || tries >= 5) throw insertError;
-          attempt = { ...attempt, receipt_no: generateReceiptNo() };
+          const period = header.issue_date || new Date().toISOString().slice(0, 10);
+          attempt = { ...attempt, receipt_no: await numberForDate(period) };
         }
       }
 
@@ -437,19 +471,10 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
       {/* ─── The sheet ─────────────────────────────────────────── */}
       <div className="overflow-x-auto">
         <div id="receipt-sheet" className="mx-auto shadow-2xl">
-          {/* Amount due + logo */}
+          {/* Logo top-left, amount due top-right. */}
           <div className="flex items-start justify-between gap-8">
-            <div className="border border-[#ddd] rounded px-5 py-4 min-w-[240px]">
-              <p className="text-[10px] uppercase tracking-wider text-[#666]">
-                {L.amountDue}
-              </p>
-              <p className="mt-1 text-[34px] leading-none font-bold">
-                {CURRENCY_SYMBOL} {formatMoney(totals.balanceDue)}
-              </p>
-            </div>
-
             {/* Company name with the logo beneath it. */}
-            <div className="flex flex-col items-end gap-2">
+            <div className="flex flex-col items-start gap-2">
               <p className="text-xl font-bold">{company.name}</p>
               {company.logo_url && (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -459,6 +484,15 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
                   className="max-h-[70px] max-w-[190px] object-contain"
                 />
               )}
+            </div>
+
+            <div className="border border-[#ddd] rounded px-5 py-4 min-w-[240px] text-right">
+              <p className="text-[10px] uppercase tracking-wider text-[#666]">
+                {L.amountDue}
+              </p>
+              <p className="mt-1 text-[34px] leading-none font-bold">
+                {CURRENCY_SYMBOL} {formatMoney(totals.balanceDue)}
+              </p>
             </div>
           </div>
 
@@ -542,7 +576,7 @@ export function ReceiptEditor({ receiptId, company, onClose, onSaved }: Props) {
                   <input
                     type="date"
                     value={header.issue_date}
-                    onChange={(e) => setField("issue_date", e.target.value)}
+                    onChange={(e) => setIssueDate(e.target.value)}
                   />
                 </td>
                 <td className="border border-[#ddd] px-1 py-1">

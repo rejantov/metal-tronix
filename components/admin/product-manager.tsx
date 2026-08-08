@@ -62,13 +62,13 @@ export function ProductManager() {
       const ext = imageFile.name.split(".").pop();
       const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
       const { error: uploadError } = await supabase.storage
-        .from("product-images")
+        .from("product-image")
         .upload(fileName, imageFile);
       if (uploadError) throw uploadError;
 
       const {
         data: { publicUrl },
-      } = supabase.storage.from("product-images").getPublicUrl(fileName);
+      } = supabase.storage.from("product-image").getPublicUrl(fileName);
 
       // Insert into DB
       const { data, error: dbError } = await supabase
@@ -102,7 +102,7 @@ export function ProductManager() {
     // Remove image from storage
     const fileName = product.image_url.split("/").pop();
     if (fileName) {
-      await supabase.storage.from("product-images").remove([fileName]);
+      await supabase.storage.from("product-image").remove([fileName]);
     }
 
     await supabase.from("products").delete().eq("id", product.id);

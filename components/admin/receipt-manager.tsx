@@ -119,8 +119,10 @@ export function ReceiptManager() {
           </p>
         </div>
       ) : (
-        <div className="border border-border rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
+        // Six columns don't fit a phone; scroll the table rather than
+        // squeezing the client name and amounts into unreadable slivers.
+        <div className="border border-border rounded-lg overflow-x-auto">
+          <table className="w-full min-w-[640px] text-sm">
             <thead>
               <tr className="bg-secondary/50 text-xs uppercase tracking-wider text-muted-foreground">
                 <th className="text-left font-medium px-4 py-3">Receipt no.</th>

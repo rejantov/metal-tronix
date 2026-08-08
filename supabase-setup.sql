@@ -174,20 +174,48 @@ create policy "partners_auth_delete"
 -- Run these in the Supabase Storage UI or via the SQL editor using the storage schema.
 -- Go to Storage → New bucket → set as Public and use the names below.
 --
---   Bucket name: product-images   (public: yes)
---   Bucket name: partner-logos    (public: yes)
+--   Bucket name: product-image      (public: yes)   ← singular, not plural
+--   Bucket name: partner-logos      (public: yes)
+--   Bucket name: quote-attachments  (public: yes)
 --   Bucket name: company-assets   (public: yes)   ← receipt logo
 --
--- Then add these storage policies (Storage → Policies):
+-- Creating the buckets is not enough: uploads go through RLS on
+-- storage.objects, and a bucket with no policies rejects every write. The
+-- API reports that denial as "Bucket not found", which looks like the bucket
+-- is missing when it is really a permissions problem.
 --
--- product-images: allow public SELECT (anyone can view images)
--- product-images: allow authenticated INSERT / DELETE
---
--- partner-logos: allow public SELECT
--- partner-logos: allow authenticated INSERT / DELETE
---
--- company-assets: allow public SELECT
--- company-assets: allow authenticated INSERT / DELETE
+-- Reads need no policy — a bucket marked Public serves objects through
+-- /object/public/… without consulting RLS. Only writes do.
+
+-- Bucket ids must match exactly — 'product-image' is singular. A mismatch
+-- here fails as "Bucket not found", which reads like the bucket is missing.
+create policy "product_image_auth_insert"
+  on storage.objects for insert to authenticated
+  with check (bucket_id = 'product-image');
+
+create policy "product_image_auth_delete"
+  on storage.objects for delete to authenticated
+  using (bucket_id = 'product-image');
+
+create policy "quote_attachments_auth_insert"
+  on storage.objects for insert to authenticated
+  with check (bucket_id = 'quote-attachments');
+
+create policy "partner_logos_auth_insert"
+  on storage.objects for insert to authenticated
+  with check (bucket_id = 'partner-logos');
+
+create policy "partner_logos_auth_delete"
+  on storage.objects for delete to authenticated
+  using (bucket_id = 'partner-logos');
+
+create policy "company_assets_auth_insert"
+  on storage.objects for insert to authenticated
+  with check (bucket_id = 'company-assets');
+
+create policy "company_assets_auth_delete"
+  on storage.objects for delete to authenticated
+  using (bucket_id = 'company-assets');
 
 
 -- ─── ADMIN USER ──────────────────────────────────────────────

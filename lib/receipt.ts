@@ -129,20 +129,39 @@ export function formatMoney(value: number): string {
   return num(value).toFixed(2);
 }
 
-export const RECEIPT_NO_PREFIX = "MTX-";
-const RECEIPT_NO_DIGITS = 9;
+// Receipt numbers read YYYYMMNNN — 202608001 is the first receipt of
+// August 2026. The counter restarts at 001 each month, and the period comes
+// from the receipt's own issue date, so changing the date changes the number.
+
+const SEQUENCE_DIGITS = 3;
+
+/** The YYYYMM part of an ISO date (yyyy-mm-dd). */
+export function receiptPeriod(isoDate: string): string {
+  const [year, month] = isoDate.split("-");
+  return `${year}${month}`;
+}
+
+export function formatReceiptNo(period: string, sequence: number): string {
+  return period + String(sequence).padStart(SEQUENCE_DIGITS, "0");
+}
 
 /**
- * MTX- followed by nine random digits, e.g. MTX-408315927.
- *
- * A billion values makes a clash with the unique constraint on receipt_no
- * vanishingly unlikely, but the save path still retries with a fresh number
- * if one ever happens. Leading zeros are allowed so the width is always nine.
+ * The counter from a receipt number in the given period, or null if it
+ * belongs to another month or isn't one of ours (older MTX-… numbers).
  */
-export function generateReceiptNo(): string {
-  let digits = "";
-  for (let i = 0; i < RECEIPT_NO_DIGITS; i++) {
-    digits += Math.floor(Math.random() * 10);
-  }
-  return RECEIPT_NO_PREFIX + digits;
+export function parseSequence(receiptNo: string, period: string): number | null {
+  if (!receiptNo.startsWith(period)) return null;
+  const digits = receiptNo.slice(period.length);
+  if (!/^\d+$/.test(digits)) return null;
+  return parseInt(digits, 10);
+}
+
+/**
+ * The next number for a period, given the highest already issued in it.
+ * Past 999 the counter simply grows a digit rather than wrapping and
+ * colliding — a longer number beats a duplicate one.
+ */
+export function nextReceiptNo(period: string, highestExisting: string | null): string {
+  const current = highestExisting ? parseSequence(highestExisting, period) : null;
+  return formatReceiptNo(period, (current ?? 0) + 1);
 }
