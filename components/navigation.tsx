@@ -26,7 +26,7 @@ export function Navigation() {
               className="rounded-sm"
             />
             <span className="text-xl font-bold tracking-tight text-foreground">
-              Metal Tronix
+              Metal Tronix 
             </span>
           </Link>
 
@@ -43,12 +43,6 @@ export function Navigation() {
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               {t.nav.products}
-            </Link>
-            <Link
-              href="/history"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t.nav.history}
             </Link>
             <Link
               href="/contact"
@@ -96,13 +90,6 @@ export function Navigation() {
                 onClick={() => setIsOpen(false)}
               >
                 {t.nav.products}
-              </Link>
-              <Link
-                href="/history"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {t.nav.history}
               </Link>
               <Link
                 href="/contact"
