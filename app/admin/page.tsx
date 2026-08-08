@@ -6,13 +6,17 @@ import { supabase } from "@/lib/supabase";
 import { QuoteInbox } from "@/components/admin/quote-inbox";
 import { ProductManager } from "@/components/admin/product-manager";
 import { PartnerManager } from "@/components/admin/partner-manager";
+import { ReceiptManager } from "@/components/admin/receipt-manager";
+import { CompanySettingsManager } from "@/components/admin/company-settings-manager";
 
-type Tab = "quotes" | "products" | "partners";
+type Tab = "quotes" | "receipts" | "products" | "partners" | "settings";
 
 const tabs: Array<{ key: Tab; label: string }> = [
   { key: "quotes", label: "Quote Inbox" },
+  { key: "receipts", label: "Receipts" },
   { key: "products", label: "Product Manager" },
   { key: "partners", label: "Partner Manager" },
+  { key: "settings", label: "Settings" },
 ];
 
 export default function AdminPage() {
@@ -21,13 +25,13 @@ export default function AdminPage() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push("/admin/login");
+    router.replace("/");
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border bg-card sticky top-0 z-10">
+      <header className="print-hide border-b border-border bg-card sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="font-bold text-foreground">Metal Tronix</span>
@@ -45,7 +49,7 @@ export default function AdminPage() {
       </header>
 
       {/* Tab Navigation */}
-      <div className="border-b border-border bg-card/50">
+      <div className="print-hide border-b border-border bg-card/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex">
             {tabs.map((tab) => (
@@ -68,8 +72,10 @@ export default function AdminPage() {
       {/* Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === "quotes" && <QuoteInbox />}
+        {activeTab === "receipts" && <ReceiptManager />}
         {activeTab === "products" && <ProductManager />}
         {activeTab === "partners" && <PartnerManager />}
+        {activeTab === "settings" && <CompanySettingsManager />}
       </main>
     </div>
   );

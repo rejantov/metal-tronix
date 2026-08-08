@@ -6,7 +6,6 @@ export const translations = {
     nav: {
       home: "Home",
       products: "Products",
-      history: "Our Story",
       contact: "Contact",
       getQuote: "Get a Quote",
     },
@@ -241,86 +240,6 @@ export const translations = {
         ],
       },
     },
-    // History Page
-    history: {
-      title: "Our Story",
-      subtitle: "Since 1987",
-      description:
-        "For over three decades, Metal Tronix has been at the forefront of precision metal fabrication, growing from a small garage operation to a state-of-the-art manufacturing facility.",
-      founderQuote:
-        '"We started with a single plasma cutter and a vision. Today, we run six fiber lasers, twelve press brakes, and employ over 150 skilled craftspeople. But our mission remains the same: deliver precision that exceeds expectations."',
-      founderName: "James Mitchell",
-      founderTitle: "Founder & CEO",
-      facility: {
-        title: "Our Facility",
-        description:
-          "Our 50,000 sq ft manufacturing facility houses the latest in CNC laser cutting and press brake technology. Climate-controlled environment ensures material stability and consistent quality.",
-      },
-      values: {
-        title: "Our Values",
-        precision: {
-          title: "Precision First",
-          description:
-            "Every cut, every bend, every weld meets or exceeds specified tolerances. We measure twice and cut once.",
-        },
-        partnership: {
-          title: "Partnership",
-          description:
-            "We're not just a vendor - we're an extension of your engineering team. Your success is our success.",
-        },
-        innovation: {
-          title: "Innovation",
-          description:
-            "Continuous investment in the latest technology keeps us at the cutting edge of metal fabrication.",
-        },
-        integrity: {
-          title: "Integrity",
-          description:
-            "Honest communication, fair pricing, and reliable delivery. We do what we say we'll do.",
-        },
-      },
-    },
-    // Timeline
-    timeline: {
-      items: [
-        {
-          year: "1987",
-          title: "Founded",
-          description:
-            "James Mitchell starts Metal Tronix in a 2,000 sq ft garage with a single plasma cutter and manual press brake.",
-        },
-        {
-          year: "1995",
-          title: "First CNC Laser",
-          description:
-            "Invested in first CO2 laser cutting system. Expanded to 8,000 sq ft facility.",
-        },
-        {
-          year: "2003",
-          title: "ISO Certification",
-          description:
-            "Achieved ISO 9001 certification. Added second laser and three CNC press brakes.",
-        },
-        {
-          year: "2010",
-          title: "Aerospace Expansion",
-          description:
-            "AS9100 certification opens aerospace market. Moved to current 30,000 sq ft facility.",
-        },
-        {
-          year: "2018",
-          title: "Fiber Laser Technology",
-          description:
-            "Transitioned to high-power fiber lasers. Added tube cutting capabilities.",
-        },
-        {
-          year: "2024",
-          title: "50,000 Sq Ft Facility",
-          description:
-            "Completed major expansion. Six fiber lasers, twelve press brakes, 150+ employees.",
-        },
-      ],
-    },
     // Footer
     footer: {
       description:
@@ -341,7 +260,6 @@ export const translations = {
     nav: {
       home: "Ballina",
       products: "Produktet",
-      history: "Historia Jonë",
       contact: "Kontakti",
       getQuote: "Merr Ofertë",
     },
@@ -575,86 +493,6 @@ export const translations = {
         ],
       },
     },
-    // History Page
-    history: {
-      title: "Historia Jonë",
-      subtitle: "Që nga 1987",
-      description:
-        "Për më shumë se tre dekada, Metal Tronix ka qenë në ballë të përpunimit preciz të metalit.",
-      founderQuote:
-        '"Filluam me një prestar plazme dhe një vizion. Sot, kemi gjashtë lazer fibër, dymbëdhjetë presa dhe mbi 150 punëtorë të aftë. Por misioni ynë mbetet i njëjtë: të ofrojmë precizitet që tejkalon pritshmeritë."',
-      founderName: "James Mitchell",
-      founderTitle: "Themelues & CEO",
-      facility: {
-        title: "Objekti Ynë",
-        description:
-          "Objekti ynë prodhues 50,000 sq ft strehon teknologjinë më të fundit në prerje lazer CNC dhe presa.",
-      },
-      values: {
-        title: "Vlerat Tona",
-        precision: {
-          title: "Preciziteti i Parë",
-          description:
-            "Çdo prerje, çdo përkulje, çdo saldim plotëson ose tejkalon tolerancat e specifikuara.",
-        },
-        partnership: {
-          title: "Partneriteti",
-          description:
-            "Nuk jemi thjesht furnitor - jemi zgjerim i ekipit tuaj inxhinierik.",
-        },
-        innovation: {
-          title: "Inovacioni",
-          description:
-            "Investim i vazhdueshëm në teknologjinë më të fundit na mban në majën e përpunimit të metalit.",
-        },
-        integrity: {
-          title: "Integriteti",
-          description:
-            "Komunikim i ndershëm, çmime të drejta dhe dorëzim i besueshëm.",
-        },
-      },
-    },
-    // Timeline
-    timeline: {
-      items: [
-        {
-          year: "1987",
-          title: "Themelimi",
-          description:
-            "James Mitchell fillon Metal Tronix në një garazh 2,000 sq ft me një prestar plazme.",
-        },
-        {
-          year: "1995",
-          title: "Lazeri i Parë CNC",
-          description:
-            "Investim në sistemin e parë të prerjes lazer CO2. Zgjerim në objekt 8,000 sq ft.",
-        },
-        {
-          year: "2003",
-          title: "Certifikim ISO",
-          description:
-            "Arritëm certifikimin ISO 9001. Shtuam lazerin e dytë dhe tre presa CNC.",
-        },
-        {
-          year: "2010",
-          title: "Zgjerim Hapësinor",
-          description:
-            "Certifikimi AS9100 hap tregun hapësinor. Transferim në objektin aktual 30,000 sq ft.",
-        },
-        {
-          year: "2018",
-          title: "Teknologjia Lazer Fibër",
-          description:
-            "Kalim në lazer fibër me fuqi të lartë. Shtim kapacitete prerje tubash.",
-        },
-        {
-          year: "2024",
-          title: "Objekt 50,000 Sq Ft",
-          description:
-            "Përfundoi zgjerimi i madh. Gjashtë lazer fibër, dymbëdhjetë presa, 150+ punonjës.",
-        },
-      ],
-    },
     // Footer
     footer: {
       description:
@@ -675,7 +513,6 @@ export const translations = {
     nav: {
       home: "Startseite",
       products: "Produkte",
-      history: "Unsere Geschichte",
       contact: "Kontakt",
       getQuote: "Angebot Anfordern",
     },
@@ -908,86 +745,6 @@ export const translations = {
           "AWS D1.1 Schweißen",
         ],
       },
-    },
-    // History Page
-    history: {
-      title: "Unsere Geschichte",
-      subtitle: "Seit 1987",
-      description:
-        "Seit über drei Jahrzehnten ist Metal Tronix an der Spitze der präzisen Metallverarbeitung.",
-      founderQuote:
-        '"Wir begannen mit einem einzigen Plasmaschneider und einer Vision. Heute betreiben wir sechs Faserlaser, zwölf Abkantpressen und beschäftigen über 150 qualifizierte Fachkräfte. Aber unsere Mission bleibt dieselbe: Präzision liefern, die Erwartungen übertrifft."',
-      founderName: "James Mitchell",
-      founderTitle: "Gründer & CEO",
-      facility: {
-        title: "Unsere Anlage",
-        description:
-          "Unsere 4.600 m² große Fertigungsanlage beherbergt die neueste CNC-Laserschneid- und Abkanttechnologie.",
-      },
-      values: {
-        title: "Unsere Werte",
-        precision: {
-          title: "Präzision Zuerst",
-          description:
-            "Jeder Schnitt, jede Biegung, jede Schweißnaht erfüllt oder übertrifft die festgelegten Toleranzen.",
-        },
-        partnership: {
-          title: "Partnerschaft",
-          description:
-            "Wir sind nicht nur ein Lieferant - wir sind eine Erweiterung Ihres Engineering-Teams.",
-        },
-        innovation: {
-          title: "Innovation",
-          description:
-            "Kontinuierliche Investitionen in neueste Technologie halten uns an der Spitze der Metallverarbeitung.",
-        },
-        integrity: {
-          title: "Integrität",
-          description:
-            "Ehrliche Kommunikation, faire Preise und zuverlässige Lieferung.",
-        },
-      },
-    },
-    // Timeline
-    timeline: {
-      items: [
-        {
-          year: "1987",
-          title: "Gründung",
-          description:
-            "James Mitchell gründet Metal Tronix in einer 185 m² großen Garage mit einem Plasmaschneider.",
-        },
-        {
-          year: "1995",
-          title: "Erster CNC-Laser",
-          description:
-            "Investition in erstes CO2-Laserschneidsystem. Erweiterung auf 740 m² Anlage.",
-        },
-        {
-          year: "2003",
-          title: "ISO-Zertifizierung",
-          description:
-            "ISO 9001 Zertifizierung erreicht. Zweiter Laser und drei CNC-Abkantpressen hinzugefügt.",
-        },
-        {
-          year: "2010",
-          title: "Luft- und Raumfahrt-Erweiterung",
-          description:
-            "AS9100 Zertifizierung öffnet Luft- und Raumfahrtmarkt. Umzug in 2.800 m² Anlage.",
-        },
-        {
-          year: "2018",
-          title: "Faserlaser-Technologie",
-          description:
-            "Umstellung auf Hochleistungs-Faserlaser. Rohrschneidfähigkeiten hinzugefügt.",
-        },
-        {
-          year: "2024",
-          title: "4.600 m² Anlage",
-          description:
-            "Große Erweiterung abgeschlossen. Sechs Faserlaser, zwölf Abkantpressen, 150+ Mitarbeiter.",
-        },
-      ],
     },
     // Footer
     footer: {

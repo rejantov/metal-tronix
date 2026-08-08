@@ -123,3 +123,125 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ─── Printable receipt ───────────────────────────────────────
+   The receipt is a paper document, so #receipt-sheet opts out of the
+   site's dark theme entirely and stays black-on-white on screen and in
+   print. Anything marked .print-hide is admin chrome that must not
+   reach the page. */
+
+#receipt-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 14mm;
+  background: #ffffff;
+  color: #111111;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+#receipt-sheet input,
+#receipt-sheet select {
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 2px 4px;
+}
+
+/* Only show an input's edges while it is being used, so the screen stays
+   close to what the paper will look like. */
+#receipt-sheet input:hover,
+#receipt-sheet select:hover {
+  border-color: #d4d4d4;
+}
+
+#receipt-sheet input:focus,
+#receipt-sheet select:focus {
+  border-color: #3b82f6;
+  background: #f5f9ff;
+}
+
+#receipt-sheet input::placeholder {
+  color: #a3a3a3;
+}
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+/* Stamped in by the editor just before printing, one per page. Screen-only
+   display is off — these exist purely to replace the browser's own footer. */
+.receipt-page-number {
+  display: none;
+}
+
+@media print {
+  .print-hide {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+  }
+
+  /* Undo the admin layout's centering and padding so the sheet is the page. */
+  body * {
+    visibility: hidden;
+  }
+
+  #receipt-sheet,
+  #receipt-sheet * {
+    visibility: visible;
+  }
+
+  #receipt-sheet {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  #receipt-sheet input,
+  #receipt-sheet select {
+    border-color: transparent !important;
+    background: transparent !important;
+    padding: 2px 4px;
+  }
+
+  /* Spinners and the date picker's calendar icon are screen-only affordances. */
+  #receipt-sheet input::-webkit-outer-spin-button,
+  #receipt-sheet input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  #receipt-sheet input::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  #receipt-sheet .receipt-page-number {
+    display: block;
+    position: absolute;
+    right: 0;
+    font-size: 9px;
+    color: #666;
+  }
+
+  #receipt-sheet .receipt-row {
+    break-inside: avoid;
+  }
+
+  #receipt-sheet .receipt-signatures {
+    break-inside: avoid;
+  }
+}

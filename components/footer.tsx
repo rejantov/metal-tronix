@@ -70,14 +70,6 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/history"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {t.nav.history}
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/contact"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
