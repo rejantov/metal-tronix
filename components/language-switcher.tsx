@@ -31,7 +31,6 @@ export function LanguageSwitcher() {
           className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
         >
           <Globe className="h-4 w-4" />
-          <span className="text-sm">{currentLang?.flag}</span>
           <span className="hidden sm:inline text-sm">{currentLang?.label}</span>
         </Button>
       </DropdownMenuTrigger>
@@ -44,8 +43,8 @@ export function LanguageSwitcher() {
               language === lang.code ? "bg-secondary" : ""
             }`}
           >
-            <span>{lang.flag}</span>
             <span>{lang.label}</span>
+            <span>{lang.flag}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

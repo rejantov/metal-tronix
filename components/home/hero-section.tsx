@@ -68,17 +68,17 @@ export function HeroSection() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="flex flex-col items-center gap-2 p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-primary/20">
               <Zap className="w-6 h-6 text-primary mb-2" />
-              <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">6kW</span>
+              <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">3kW</span>
               <span className="text-sm text-muted-foreground">{t.hero.stats.laserPower}</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-primary/20">
               <Shield className="w-6 h-6 text-primary mb-2" />
-              <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">±0.005&quot;</span>
-              <span className="text-sm text-muted-foreground">{t.hero.stats.tolerance}</span>
+              <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">2×</span>
+              <span className="text-sm text-muted-foreground">{t.hero.stats.pressCapacity}</span>
             </div>
             <div className="flex flex-col items-center gap-2 p-6 rounded-xl bg-gradient-to-br from-card to-card/50 border border-primary/20">
               <Clock className="w-6 h-6 text-primary mb-2" />
-              <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">37+</span>
+              <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">4+</span>
               <span className="text-sm text-muted-foreground">{t.hero.stats.experience}</span>
             </div>
           </div>

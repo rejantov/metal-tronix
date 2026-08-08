@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import { LanguageProvider } from '@/lib/language-context'
 import './globals.css'
 
@@ -8,23 +7,17 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Metal Tronix | Precision Laser Cutting & Metal Fabrication',
+  title: 'Metal Tronix',
   description: 'Metal Tronix specializes in CNC laser cutting, press brake forming, and precision sheet metal fabrication. Tolerances down to ±0.005". ISO 9001 certified.',
-  generator: 'v0.app',
+<<<<<<< HEAD
+=======
+  // One mark for every slot — the logo keeps its own white background, so it
+  // stays legible on light and dark browser chrome alike and needs no variants.
+>>>>>>> feature/our_story
   icons: {
     icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
     ],
     apple: '/apple-icon.png',
   },
@@ -41,7 +34,6 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
         </LanguageProvider>
-        <Analytics />
       </body>
     </html>
   )

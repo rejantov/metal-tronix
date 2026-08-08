@@ -6,7 +6,6 @@ export const translations = {
     nav: {
       home: "Home",
       products: "Products",
-      history: "Our Story",
       contact: "Contact",
       getQuote: "Get a Quote",
     },
@@ -19,9 +18,9 @@ export const translations = {
       cta: "Request a Quote",
       ctaSecondary: "View Our Work",
       stats: {
-        laserPower: "6kW Fiber Laser Power",
-        tolerance: "±0.005\" Tolerances",
-        experience: "37+ Years Experience",
+        laserPower: "Fiber Laser Power",
+        pressCapacity: "125 & 180-ton Press Brakes",
+        experience: "4+ Years Experience",
       },
     },
     // Services Section
@@ -33,23 +32,26 @@ export const translations = {
       laserCutting: {
         title: "CNC Laser Cutting",
         description:
-          "High-precision fiber laser cutting with minimal kerf width. Capable of processing steel up to 1\" thick, stainless up to 0.5\", and aluminum up to 0.375\".",
+          "Fiber laser cutting for carbon steel, stainless steel, aluminum, brass, and copper. Processing format up to 4064mm × 2032mm (13' × 6.5') with high positioning accuracy.",
         features: [
-          "6kW IPG fiber source",
-          "0.004\" kerf width",
-          "N2/O2 assist gas options",
-          "Edge quality Ra 125μin",
+          "Fiber laser, 1.5kW – 3kW",
+          "Format: 4064mm × 2032mm (13' × 6.5')",
+          "Accuracy: ±0.05mm/m",
+          "Carbon steel, stainless, aluminum, brass, copper",
+          "EtherCAT bus control system",
+          "N₂/O₂ assist gas options",
         ],
       },
       brakeFoming: {
         title: "Press Brake Forming",
         description:
-          "CNC press brake operations with back-gauge accuracy to ±0.0005\". Complex multi-bend parts with tight angular tolerances.",
+          "Two hydraulic CNC press brakes for precision bending from light gauge to heavy plate. Complex multi-bend parts with tight angular tolerances.",
         features: [
-          "350-ton capacity",
-          "14' bed length",
+          "125-ton & 180-ton press brakes",
+          "Air bend & bottom bend capable",
           "±0.5° angular tolerance",
-          "Air bend & bottom bend",
+          "CNC back-gauge control",
+          "Light gauge to heavy plate bending",
         ],
       },
       tubeCutting: {
@@ -66,12 +68,21 @@ export const translations = {
       customFab: {
         title: "Custom Fabrication",
         description:
-          "Complete fabrication services including welding, hardware insertion, and assembly. MIG, TIG, and spot welding capabilities.",
+          "Complete fabrication services from welding and structural work to finishing and assembly. One-off prototypes to full production runs.",
         features: [
-          "AWS D1.1 certified",
-          "PEM hardware insertion",
+          "MIG, TIG & stick welding",
+          "Tube & pipe cutting and fitting",
+          "Structural steel fabrication",
+          "Fences, gates & railings",
+          "Stairs & stair stringers",
+          "Handrails & balustrades",
+          "Sheet metal enclosures & boxes",
+          "Brackets, frames & custom parts",
+          "Hardware insertion & PEM fasteners",
+          "Grinding & surface finishing",
+          "Painting & protective coatings",
           "Sub-assembly & kitting",
-          "Finishing coordination",
+          "Prototype to production runs",
         ],
       },
     },
@@ -82,21 +93,31 @@ export const translations = {
       materials: {
         title: "Materials We Process",
         items: [
-          { name: "Carbon Steel", spec: "10-22 gauge, up to 1\" plate" },
-          { name: "Stainless Steel", spec: "304, 316, 430 - up to 0.5\"" },
-          { name: "Aluminum", spec: "5052, 6061 - up to 0.375\"" },
-          { name: "Specialty Alloys", spec: "AR400/500, Hardox, Copper" },
+          { name: "Carbon Steel", spec: "10–22 gauge, up to 16mm (0.625\") plate" },
+          { name: "Stainless Steel", spec: "304, 316, 430 — up to 8mm (0.312\")" },
+          { name: "Aluminum", spec: "5052, 6061 — up to 8mm (0.312\")" },
+          { name: "Brass & Copper", spec: "up to 4mm (0.156\")" },
+          { name: "Specialty Alloys", spec: "AR400/500, Hardox (press brake only)" },
         ],
       },
       technical: {
         title: "Technical Specs",
         items: [
-          { name: "Positional Accuracy", spec: "±0.002\" / 10\"" },
-          { name: "Repeatability", spec: "±0.0005\"" },
-          { name: "Max Sheet Size", spec: '60" × 120"' },
+          { name: "Positional Accuracy", spec: "±0.05mm/m" },
+          { name: "Kerf Width", spec: "~0.2mm–0.3mm" },
+          { name: "Max Sheet Size", spec: "4064mm × 2032mm (13' × 6'8\")" },
           { name: "Min Feature Size", spec: "0.5× material thickness" },
+          { name: "Press Brake Capacity", spec: "125-ton & 180-ton" },
+          { name: "Angular Tolerance", spec: "±0.5°" },
         ],
       },
+    },
+    // Partners Section
+    partners: {
+      subtitle: "Trusted By",
+      title: "Our Partners",
+      description:
+        "We collaborate with industry leaders to deliver exceptional results",
     },
     // CTA Section
     cta: {
@@ -107,7 +128,7 @@ export const translations = {
       features: [
         "24-48 hour quote turnaround",
         "DXF, DWG, STEP file support",
-        "Prototype to Kanban programs",
+        "Prototype to Rate Production programs",
       ],
     },
     // Products Page
@@ -177,7 +198,7 @@ export const translations = {
           small: "Small Run (6-50 pieces)",
           medium: "Medium Run (51-500 pieces)",
           production: "Production (500+ pieces)",
-          kanban: "Kanban / Blanket Order",
+          rateProduction: "Rate Production / Blanket Order",
         },
         message: "Project Details",
         messagePlaceholder:
@@ -192,19 +213,21 @@ export const translations = {
         title: "Contact Information",
         address: {
           label: "Address",
-          value: "1234 Industrial Parkway\nManufacturing District\nYour City, ST 12345",
+          value: "St. Loro Boriçi\nPërroi i Njelmët\nPrishtinë/Kosovo, 10000",
         },
         phone: {
           label: "Phone",
-          value: "(555) 123-4567",
+          value: "+383 44-169-716",
+          value1: "+383 48-288-219",
+
         },
         email: {
           label: "Email",
-          value: "quotes@metaltronix.com",
+          value: "metal.tronixx@gmail.com",
         },
         hours: {
           label: "Hours",
-          value: "Monday - Friday: 7:00 AM - 5:00 PM\nSaturday: By appointment",
+          value: "Monday - Saturday: 8:00 AM - 5:00 PM\nAfter Hours: By appointment Only",
         },
       },
       certifications: {
@@ -216,86 +239,6 @@ export const translations = {
           "AWS D1.1 Welding",
         ],
       },
-    },
-    // History Page
-    history: {
-      title: "Our Story",
-      subtitle: "Since 1987",
-      description:
-        "For over three decades, Metal Tronix has been at the forefront of precision metal fabrication, growing from a small garage operation to a state-of-the-art manufacturing facility.",
-      founderQuote:
-        '"We started with a single plasma cutter and a vision. Today, we run six fiber lasers, twelve press brakes, and employ over 150 skilled craftspeople. But our mission remains the same: deliver precision that exceeds expectations."',
-      founderName: "James Mitchell",
-      founderTitle: "Founder & CEO",
-      facility: {
-        title: "Our Facility",
-        description:
-          "Our 50,000 sq ft manufacturing facility houses the latest in CNC laser cutting and press brake technology. Climate-controlled environment ensures material stability and consistent quality.",
-      },
-      values: {
-        title: "Our Values",
-        precision: {
-          title: "Precision First",
-          description:
-            "Every cut, every bend, every weld meets or exceeds specified tolerances. We measure twice and cut once.",
-        },
-        partnership: {
-          title: "Partnership",
-          description:
-            "We're not just a vendor - we're an extension of your engineering team. Your success is our success.",
-        },
-        innovation: {
-          title: "Innovation",
-          description:
-            "Continuous investment in the latest technology keeps us at the cutting edge of metal fabrication.",
-        },
-        integrity: {
-          title: "Integrity",
-          description:
-            "Honest communication, fair pricing, and reliable delivery. We do what we say we'll do.",
-        },
-      },
-    },
-    // Timeline
-    timeline: {
-      items: [
-        {
-          year: "1987",
-          title: "Founded",
-          description:
-            "James Mitchell starts Metal Tronix in a 2,000 sq ft garage with a single plasma cutter and manual press brake.",
-        },
-        {
-          year: "1995",
-          title: "First CNC Laser",
-          description:
-            "Invested in first CO2 laser cutting system. Expanded to 8,000 sq ft facility.",
-        },
-        {
-          year: "2003",
-          title: "ISO Certification",
-          description:
-            "Achieved ISO 9001 certification. Added second laser and three CNC press brakes.",
-        },
-        {
-          year: "2010",
-          title: "Aerospace Expansion",
-          description:
-            "AS9100 certification opens aerospace market. Moved to current 30,000 sq ft facility.",
-        },
-        {
-          year: "2018",
-          title: "Fiber Laser Technology",
-          description:
-            "Transitioned to high-power fiber lasers. Added tube cutting capabilities.",
-        },
-        {
-          year: "2024",
-          title: "50,000 Sq Ft Facility",
-          description:
-            "Completed major expansion. Six fiber lasers, twelve press brakes, 150+ employees.",
-        },
-      ],
     },
     // Footer
     footer: {
@@ -317,7 +260,6 @@ export const translations = {
     nav: {
       home: "Ballina",
       products: "Produktet",
-      history: "Historia Jonë",
       contact: "Kontakti",
       getQuote: "Merr Ofertë",
     },
@@ -330,9 +272,9 @@ export const translations = {
       cta: "Kërko Ofertë",
       ctaSecondary: "Shiko Punët Tona",
       stats: {
-        laserPower: "6kW Fuqi Lazeri Fibër",
-        tolerance: '±0.005" Toleranca',
-        experience: "37+ Vite Përvojë",
+        laserPower: "Fuqi Lazeri Fibër",
+        pressCapacity: "Presa 125 & 180-tonëshe",
+        experience: "4+ Vite Përvojë",
       },
     },
     // Services Section
@@ -344,23 +286,26 @@ export const translations = {
       laserCutting: {
         title: "Prerje Lazer CNC",
         description:
-          "Prerje lazer fibër me precizitet të lartë dhe gjerësi minimale prerjeje. I aftë të përpunojë çelik deri në 1\" trashësi.",
+          "Prerje lazer fibër për çelik karboni, inox, alumin, tunxh dhe bakër. Format përpunimi deri në 4064mm × 2032mm (13' × 6.5') me saktësi të lartë pozicionale.",
         features: [
-          "Burim fibër IPG 6kW",
-          '0.004" gjerësi prerjeje',
-          "Opsione gazi N2/O2",
-          "Cilësi skaje Ra 125μin",
+          "Lazer fibër, 1.5kW – 3kW",
+          "Format: 4064mm × 2032mm (13' × 6.5')",
+          "Saktësi: ±0.05mm/m",
+          "Çelik karboni, inox, alumin, tunxh, bakër",
+          "Sistem kontrolli EtherCAT",
+          "Opsione gazi ndihmës N₂/O₂",
         ],
       },
       brakeFoming: {
         title: "Formim me Presa",
         description:
-          "Operacione presa CNC me saktësi matësi prapa deri në ±0.0005\". Pjesë komplekse me shumë përkulje.",
+          "Dy presa hidraulike CNC për përkulje precize nga gauge i lehtë deri në pllaka të rënda. Pjesë komplekse me shumë përkulje dhe toleranca të ngushta.",
         features: [
-          "Kapacitet 350 tonë",
-          "14' gjatësi shtrati",
-          "±0.5° tolerancë këndore",
+          "Presa 125-tonëshe & 180-tonëshe",
           "Përkulje ajri & fund",
+          "±0.5° tolerancë këndore",
+          "Kontroll back-gauge CNC",
+          "Nga gauge i lehtë deri në pllakë të rëndë",
         ],
       },
       tubeCutting: {
@@ -377,12 +322,21 @@ export const translations = {
       customFab: {
         title: "Përpunim i Personalizuar",
         description:
-          "Shërbime të plota përpunimi përfshirë saldim, futje pajisjesh dhe montim.",
+          "Shërbime të plota prodhimi nga saldimi dhe puna strukturore deri te përfundimi dhe montimi. Nga prototipet deri në prodhim serik.",
         features: [
-          "Certifikuar AWS D1.1",
-          "Futje pajisjesh PEM",
+          "Saldim MIG, TIG & elektro",
+          "Prerje dhe lidhje tubash & gypash",
+          "Prodhim çeliku strukturor",
+          "Gardhe, porta & ballustrada",
+          "Shkallë & traversa shkallësh",
+          "Mbajtëse dore & ballustrada",
+          "Kuti & kabinetë me fletë metalike",
+          "Konsolla, korniza & pjesë të personalizuara",
+          "Futje pajisjesh & çelësa PEM",
+          "Bluarje & përfundim sipërfaqeje",
+          "Bojëzim & shtresa mbrojtëse",
           "Nën-montim & grupim",
-          "Koordinim përfundimi",
+          "Nga prototipi deri në prodhim serik",
         ],
       },
     },
@@ -393,21 +347,31 @@ export const translations = {
       materials: {
         title: "Materialet që Përpunojmë",
         items: [
-          { name: "Çelik Karboni", spec: "10-22 gauge, deri në 1\" pllakë" },
-          { name: "Çelik Inox", spec: "304, 316, 430 - deri në 0.5\"" },
-          { name: "Alumin", spec: "5052, 6061 - deri në 0.375\"" },
-          { name: "Lidhje Speciale", spec: "AR400/500, Hardox, Bakër" },
+          { name: "Çelik Karboni", spec: "10–22 gauge, deri në 16mm (0.625\") pllakë" },
+          { name: "Çelik Inox", spec: "304, 316, 430 — deri në 8mm (0.312\")" },
+          { name: "Alumin", spec: "5052, 6061 — deri në 8mm (0.312\")" },
+          { name: "Tunxh & Bakër", spec: "deri në 4mm (0.156\")" },
+          { name: "Lidhje Speciale", spec: "AR400/500, Hardox (vetëm presa)" },
         ],
       },
       technical: {
         title: "Specifikimet Teknike",
         items: [
-          { name: "Saktësia Pozicionale", spec: '±0.002" / 10"' },
-          { name: "Përsëritshmëria", spec: '±0.0005"' },
-          { name: "Madhësia Max e Fletës", spec: '60" × 120"' },
+          { name: "Saktësia Pozicionale", spec: "±0.05mm/m" },
+          { name: "Gjerësia e Prerjës", spec: "~0.2mm–0.3mm" },
+          { name: "Madhësia Max e Fletës", spec: "4064mm × 2032mm (13' × 6'8\")" },
           { name: "Madhësia Min e Veçorisë", spec: "0.5× trashësia materialit" },
+          { name: "Kapaciteti i Presës", spec: "125 & 180 tonë" },
+          { name: "Tolerancë Këndore", spec: "±0.5°" },
         ],
       },
+    },
+    // Partners Section
+    partners: {
+      subtitle: "Të Besuar Nga",
+      title: "Partnerët Tanë",
+      description:
+        "Ne bashkëpunojmë me liderë të industrisë për të ofruar rezultate të jashtëzakonshme",
     },
     // CTA Section
     cta: {
@@ -418,7 +382,7 @@ export const translations = {
       features: [
         "24-48 orë kohë përgjigjeje",
         "Mbështetje skedarësh DXF, DWG, STEP",
-        "Prototip deri në programe Kanban",
+        "Prototip deri në programe Bllok",
       ],
     },
     // Products Page
@@ -488,7 +452,7 @@ export const translations = {
           small: "Seri e Vogël (6-50 copë)",
           medium: "Seri e Mesme (51-500 copë)",
           production: "Prodhim (500+ copë)",
-          kanban: "Kanban / Porosi Bllok",
+          rateProduction: "Porosi Bllok",
         },
         message: "Detajet e Projektit",
         messagePlaceholder:
@@ -503,19 +467,20 @@ export const translations = {
         title: "Informacione Kontakti",
         address: {
           label: "Adresa",
-          value: "1234 Rruga Industriale\nZona Prodhuese\nQyteti, 12345",
+          value: "Rr. Loro Boriçi\nPërroi i Njelmët\nPrishtinë/Kosovë, 10000",
         },
         phone: {
           label: "Telefoni",
-          value: "+355 69 123 4567",
+          value: "+383 44-169-716",
+          value1: "+383 48-288-219",
         },
         email: {
           label: "Email",
-          value: "quotes@metaltronix.com",
+          value: "metal.tronixx@gmail.com",
         },
         hours: {
           label: "Orari",
-          value: "E Hënë - E Premte: 07:00 - 17:00\nE Shtunë: Me takim",
+          value: "E Hënë - E Shtunë: 08:00 - 17:00\nJashtë orarit: Vetëm me takim",
         },
       },
       certifications: {
@@ -527,86 +492,6 @@ export const translations = {
           "AWS D1.1 Saldim",
         ],
       },
-    },
-    // History Page
-    history: {
-      title: "Historia Jonë",
-      subtitle: "Që nga 1987",
-      description:
-        "Për më shumë se tre dekada, Metal Tronix ka qenë në ballë të përpunimit preciz të metalit.",
-      founderQuote:
-        '"Filluam me një prestar plazme dhe një vizion. Sot, kemi gjashtë lazer fibër, dymbëdhjetë presa dhe mbi 150 punëtorë të aftë. Por misioni ynë mbetet i njëjtë: të ofrojmë precizitet që tejkalon pritshmeritë."',
-      founderName: "James Mitchell",
-      founderTitle: "Themelues & CEO",
-      facility: {
-        title: "Objekti Ynë",
-        description:
-          "Objekti ynë prodhues 50,000 sq ft strehon teknologjinë më të fundit në prerje lazer CNC dhe presa.",
-      },
-      values: {
-        title: "Vlerat Tona",
-        precision: {
-          title: "Preciziteti i Parë",
-          description:
-            "Çdo prerje, çdo përkulje, çdo saldim plotëson ose tejkalon tolerancat e specifikuara.",
-        },
-        partnership: {
-          title: "Partneriteti",
-          description:
-            "Nuk jemi thjesht furnitor - jemi zgjerim i ekipit tuaj inxhinierik.",
-        },
-        innovation: {
-          title: "Inovacioni",
-          description:
-            "Investim i vazhdueshëm në teknologjinë më të fundit na mban në majën e përpunimit të metalit.",
-        },
-        integrity: {
-          title: "Integriteti",
-          description:
-            "Komunikim i ndershëm, çmime të drejta dhe dorëzim i besueshëm.",
-        },
-      },
-    },
-    // Timeline
-    timeline: {
-      items: [
-        {
-          year: "1987",
-          title: "Themelimi",
-          description:
-            "James Mitchell fillon Metal Tronix në një garazh 2,000 sq ft me një prestar plazme.",
-        },
-        {
-          year: "1995",
-          title: "Lazeri i Parë CNC",
-          description:
-            "Investim në sistemin e parë të prerjes lazer CO2. Zgjerim në objekt 8,000 sq ft.",
-        },
-        {
-          year: "2003",
-          title: "Certifikim ISO",
-          description:
-            "Arritëm certifikimin ISO 9001. Shtuam lazerin e dytë dhe tre presa CNC.",
-        },
-        {
-          year: "2010",
-          title: "Zgjerim Hapësinor",
-          description:
-            "Certifikimi AS9100 hap tregun hapësinor. Transferim në objektin aktual 30,000 sq ft.",
-        },
-        {
-          year: "2018",
-          title: "Teknologjia Lazer Fibër",
-          description:
-            "Kalim në lazer fibër me fuqi të lartë. Shtim kapacitete prerje tubash.",
-        },
-        {
-          year: "2024",
-          title: "Objekt 50,000 Sq Ft",
-          description:
-            "Përfundoi zgjerimi i madh. Gjashtë lazer fibër, dymbëdhjetë presa, 150+ punonjës.",
-        },
-      ],
     },
     // Footer
     footer: {
@@ -628,7 +513,6 @@ export const translations = {
     nav: {
       home: "Startseite",
       products: "Produkte",
-      history: "Unsere Geschichte",
       contact: "Kontakt",
       getQuote: "Angebot Anfordern",
     },
@@ -641,9 +525,9 @@ export const translations = {
       cta: "Angebot Anfordern",
       ctaSecondary: "Unsere Arbeit Ansehen",
       stats: {
-        laserPower: "6kW Faserlaser-Leistung",
-        tolerance: "±0,005\" Toleranzen",
-        experience: "37+ Jahre Erfahrung",
+        laserPower: "Faserlaser-Leistung",
+        pressCapacity: "125 & 180-t Abkantpressen",
+        experience: "4+ Jahre Erfahrung",
       },
     },
     // Services Section
@@ -655,23 +539,26 @@ export const translations = {
       laserCutting: {
         title: "CNC-Laserschneiden",
         description:
-          "Hochpräzises Faserlaserschneiden mit minimaler Schnittbreite. Verarbeitung von Stahl bis 25mm, Edelstahl bis 12mm.",
+          "Faserlaserschneiden für Kohlenstoffstahl, Edelstahl, Aluminium, Messing und Kupfer. Format bis 4064mm × 2032mm (13' × 6,5') mit hoher Positionsgenauigkeit.",
         features: [
-          "6kW IPG Faserquelle",
-          "0,1mm Schnittbreite",
-          "N2/O2 Schneidgas-Optionen",
-          "Kantenqualität Ra 3,2μm",
+          "Faserlaser, 1,5kW – 3kW",
+          "Format: 4064mm × 2032mm (13' × 6,5')",
+          "Genauigkeit: ±0,05mm/m",
+          "Kohlenstoffstahl, Edelstahl, Aluminium, Messing, Kupfer",
+          "EtherCAT-Steuerungssystem",
+          "N₂/O₂ Schneidgas-Optionen",
         ],
       },
       brakeFoming: {
         title: "Abkanten",
         description:
-          "CNC-Abkantoperationen mit Anschlaggenauigkeit von ±0,01mm. Komplexe Teile mit mehrfachen Biegungen.",
+          "Zwei hydraulische CNC-Abkantpressen für präzises Biegen von Dünnblech bis zur schweren Platte. Komplexe Teile mit mehrfachen Biegungen.",
         features: [
-          "350 Tonnen Kapazität",
-          "4,2m Bettlänge",
+          "125-t & 180-t Abkantpressen",
+          "Luft- & Grundbiegen möglich",
           "±0,5° Winkeltoleranz",
-          "Luft- & Grundbiegen",
+          "CNC-Anschlagsteuerung",
+          "Dünnblech bis schwere Platte",
         ],
       },
       tubeCutting: {
@@ -688,12 +575,21 @@ export const translations = {
       customFab: {
         title: "Kundenspezifische Fertigung",
         description:
-          "Komplette Fertigungsdienstleistungen einschließlich Schweißen, Hardwareeinsatz und Montage.",
+          "Komplette Fertigungsdienstleistungen vom Schweißen und Stahlbau bis zur Oberfläche und Montage. Vom Prototyp bis zur Serienproduktion.",
         features: [
-          "AWS D1.1 zertifiziert",
-          "PEM Hardware-Einsatz",
+          "MIG-, TIG- & Lichtbogenschweißen",
+          "Rohr- & Profilschneiden und -verbindung",
+          "Stahlbaustrukturen",
+          "Zäune, Tore & Geländer",
+          "Treppen & Treppenwangen",
+          "Handläufe & Balustrade",
+          "Blechgehäuse & Boxen",
+          "Konsolen, Rahmen & Sonderteile",
+          "Hardware-Einsatz & PEM-Befestiger",
+          "Schleifen & Oberflächenbehandlung",
+          "Lackierung & Schutzschichten",
           "Unterbaugruppen & Kitting",
-          "Oberflächenkoordination",
+          "Prototyp bis Serienproduktion",
         ],
       },
     },
@@ -704,21 +600,31 @@ export const translations = {
       materials: {
         title: "Materialien die wir Verarbeiten",
         items: [
-          { name: "Kohlenstoffstahl", spec: "0,5-3mm, bis zu 25mm Platte" },
-          { name: "Edelstahl", spec: "304, 316, 430 - bis zu 12mm" },
-          { name: "Aluminium", spec: "5052, 6061 - bis zu 10mm" },
-          { name: "Speziallegierungen", spec: "AR400/500, Hardox, Kupfer" },
+          { name: "Kohlenstoffstahl", spec: "10–22 Gauge, bis zu 16mm (0,625\") Platte" },
+          { name: "Edelstahl", spec: "304, 316, 430 — bis zu 8mm (0,312\")" },
+          { name: "Aluminium", spec: "5052, 6061 — bis zu 8mm (0,312\")" },
+          { name: "Messing & Kupfer", spec: "bis zu 4mm (0,156\")" },
+          { name: "Speziallegierungen", spec: "AR400/500, Hardox (nur Abkantpresse)" },
         ],
       },
       technical: {
         title: "Technische Daten",
         items: [
-          { name: "Positionsgenauigkeit", spec: "±0,05mm / 250mm" },
-          { name: "Wiederholgenauigkeit", spec: "±0,01mm" },
-          { name: "Max. Blechgröße", spec: "1500mm × 3000mm" },
+          { name: "Positionsgenauigkeit", spec: "±0,05mm/m" },
+          { name: "Schnittbreite", spec: "~0,2mm–0,3mm" },
+          { name: "Max. Blechgröße", spec: "4064mm × 2032mm (13' × 6'8\")" },
           { name: "Min. Merkmalsgröße", spec: "0,5× Materialdicke" },
+          { name: "Abkantkapazität", spec: "125 t & 180 t" },
+          { name: "Winkeltoleranz", spec: "±0,5°" },
         ],
       },
+    },
+    // Partners Section
+    partners: {
+      subtitle: "Vertraut Von",
+      title: "Unsere Partner",
+      description:
+        "Wir arbeiten mit Branchenführern zusammen, um außergewöhnliche Ergebnisse zu liefern",
     },
     // CTA Section
     cta: {
@@ -729,7 +635,7 @@ export const translations = {
       features: [
         "24-48 Stunden Angebotszeit",
         "DXF, DWG, STEP Dateiunterstützung",
-        "Prototyp bis Kanban-Programme",
+        "Prototyp bis Rate Production-Programme",
       ],
     },
     // Products Page
@@ -799,7 +705,7 @@ export const translations = {
           small: "Kleinserie (6-50 Stück)",
           medium: "Mittelserie (51-500 Stück)",
           production: "Produktion (500+ Stück)",
-          kanban: "Kanban / Rahmenauftrag",
+          rateProduction: "Rahmenauftrag",
         },
         message: "Projektdetails",
         messagePlaceholder:
@@ -814,19 +720,20 @@ export const translations = {
         title: "Kontaktinformationen",
         address: {
           label: "Adresse",
-          value: "Industriestraße 1234\nGewerbegebiet\nIhre Stadt, 12345",
+          value: "St. Loro Boriçi\nPërroi i Njelmët\nPristina/Kosovo, 10000",
         },
         phone: {
           label: "Telefon",
-          value: "+49 123 456789",
+          value: "+383 44-169-716",
+          value1: "+383 48-288-219",
         },
         email: {
           label: "E-Mail",
-          value: "quotes@metaltronix.com",
+          value: "metal.tronixx@gmail.com",
         },
         hours: {
           label: "Öffnungszeiten",
-          value: "Montag - Freitag: 07:00 - 17:00 Uhr\nSamstag: Nach Vereinbarung",
+          value: "Montag - Samstag: 08:00 - 17:00 Uhr\nAußerhalb der Öffnungszeiten: Nur nach Vereinbarung",
         },
       },
       certifications: {
@@ -838,86 +745,6 @@ export const translations = {
           "AWS D1.1 Schweißen",
         ],
       },
-    },
-    // History Page
-    history: {
-      title: "Unsere Geschichte",
-      subtitle: "Seit 1987",
-      description:
-        "Seit über drei Jahrzehnten ist Metal Tronix an der Spitze der präzisen Metallverarbeitung.",
-      founderQuote:
-        '"Wir begannen mit einem einzigen Plasmaschneider und einer Vision. Heute betreiben wir sechs Faserlaser, zwölf Abkantpressen und beschäftigen über 150 qualifizierte Fachkräfte. Aber unsere Mission bleibt dieselbe: Präzision liefern, die Erwartungen übertrifft."',
-      founderName: "James Mitchell",
-      founderTitle: "Gründer & CEO",
-      facility: {
-        title: "Unsere Anlage",
-        description:
-          "Unsere 4.600 m² große Fertigungsanlage beherbergt die neueste CNC-Laserschneid- und Abkanttechnologie.",
-      },
-      values: {
-        title: "Unsere Werte",
-        precision: {
-          title: "Präzision Zuerst",
-          description:
-            "Jeder Schnitt, jede Biegung, jede Schweißnaht erfüllt oder übertrifft die festgelegten Toleranzen.",
-        },
-        partnership: {
-          title: "Partnerschaft",
-          description:
-            "Wir sind nicht nur ein Lieferant - wir sind eine Erweiterung Ihres Engineering-Teams.",
-        },
-        innovation: {
-          title: "Innovation",
-          description:
-            "Kontinuierliche Investitionen in neueste Technologie halten uns an der Spitze der Metallverarbeitung.",
-        },
-        integrity: {
-          title: "Integrität",
-          description:
-            "Ehrliche Kommunikation, faire Preise und zuverlässige Lieferung.",
-        },
-      },
-    },
-    // Timeline
-    timeline: {
-      items: [
-        {
-          year: "1987",
-          title: "Gründung",
-          description:
-            "James Mitchell gründet Metal Tronix in einer 185 m² großen Garage mit einem Plasmaschneider.",
-        },
-        {
-          year: "1995",
-          title: "Erster CNC-Laser",
-          description:
-            "Investition in erstes CO2-Laserschneidsystem. Erweiterung auf 740 m² Anlage.",
-        },
-        {
-          year: "2003",
-          title: "ISO-Zertifizierung",
-          description:
-            "ISO 9001 Zertifizierung erreicht. Zweiter Laser und drei CNC-Abkantpressen hinzugefügt.",
-        },
-        {
-          year: "2010",
-          title: "Luft- und Raumfahrt-Erweiterung",
-          description:
-            "AS9100 Zertifizierung öffnet Luft- und Raumfahrtmarkt. Umzug in 2.800 m² Anlage.",
-        },
-        {
-          year: "2018",
-          title: "Faserlaser-Technologie",
-          description:
-            "Umstellung auf Hochleistungs-Faserlaser. Rohrschneidfähigkeiten hinzugefügt.",
-        },
-        {
-          year: "2024",
-          title: "4.600 m² Anlage",
-          description:
-            "Große Erweiterung abgeschlossen. Sechs Faserlaser, zwölf Abkantpressen, 150+ Mitarbeiter.",
-        },
-      ],
     },
     // Footer
     footer: {
@@ -936,4 +763,4 @@ export const translations = {
   },
 } as const;
 
-export type Translations = typeof translations.en;
+export type Translations = (typeof translations)[Language];
