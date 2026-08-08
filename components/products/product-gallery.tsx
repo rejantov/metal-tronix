@@ -1,105 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-context";
-
-const products = [
-  {
-    id: 1,
-    titleKey: "Precision Laser Cut Components",
-    categoryKey: "laserCutting",
-    description:
-      "Intricate stainless steel components with ±0.003\" tolerance. 304 SS, 16 gauge, nitrogen assist for oxide-free edges.",
-    specs: {
-      material: "304 Stainless Steel",
-      thickness: "16 gauge (0.060\")",
-      tolerance: "±0.003\"",
-      finish: "Mill finish, deburring included",
-    },
-    image: "/images/product-1.jpg",
-  },
-  {
-    id: 2,
-    titleKey: "Press Brake Formed Enclosures",
-    categoryKey: "brakeForming",
-    description:
-      "Multi-bend aluminum enclosure panels with tight angular tolerances. 5052-H32 aluminum for excellent formability.",
-    specs: {
-      material: "5052-H32 Aluminum",
-      thickness: "0.090\"",
-      tolerance: "±0.5° angular",
-      finish: "Ready for powder coat",
-    },
-    image: "/images/product-2.jpg",
-  },
-  {
-    id: 3,
-    titleKey: "Structural Weldments",
-    categoryKey: "customFab",
-    description:
-      "Heavy-duty welded steel assemblies with PEM hardware insertion. Full MIG welding per AWS D1.1 standards.",
-    specs: {
-      material: "A36 Mild Steel",
-      thickness: "3/16\" - 1/2\"",
-      welding: "AWS D1.1 certified",
-      hardware: "PEM studs & standoffs",
-    },
-    image: "/images/product-3.jpg",
-  },
-  {
-    id: 4,
-    titleKey: "Tube Laser Cutting",
-    categoryKey: "tubePipe",
-    description:
-      "Complex tube profiles with cope cuts and notches. Eliminates secondary operations for weld-ready assembly.",
-    specs: {
-      material: "DOM Steel Tubing",
-      size: "2\" x 2\" x 0.120\" wall",
-      tolerance: "±0.005\"",
-      finish: "Weld-ready, no deburring needed",
-    },
-    image: "/images/product-4.jpg",
-  },
-  {
-    id: 5,
-    titleKey: "Precision Mounting Brackets",
-    categoryKey: "laserCutting",
-    description:
-      "High-volume production run of mounting brackets. Nested for optimal material yield with full traceability.",
-    specs: {
-      material: "1008 CRS",
-      thickness: "11 gauge (0.120\")",
-      quantity: "5,000 pcs/release",
-      delivery: "Kanban program",
-    },
-    image: "/images/product-5.jpg",
-  },
-  {
-    id: 6,
-    titleKey: "Electronic Chassis",
-    categoryKey: "assemblies",
-    description:
-      "Complete electronic enclosure with ventilation slots, mounting bosses, and hardware. Powder coat ready.",
-    specs: {
-      material: "5052 Aluminum",
-      thickness: "0.063\"",
-      hardware: "Clinch nuts & standoffs",
-      finish: "Chem film prep for paint",
-    },
-    image: "/images/product-6.jpg",
-  },
-];
+import { supabase } from "@/lib/supabase";
+import type { DbProduct } from "@/lib/types";
 
 type CategoryKey = "laserCutting" | "brakeForming" | "tubePipe" | "customFab" | "assemblies";
 
+const categoryToKey: Record<string, CategoryKey> = {
+  "Laser Cutting": "laserCutting",
+  "Press Brake Forming": "brakeForming",
+  "Tube & Pipe": "tubePipe",
+  "Custom Fabrication": "customFab",
+  "Assemblies": "assemblies",
+};
+
 export function ProductGallery() {
   const { t } = useLanguage();
+  const [products, setProducts] = useState<DbProduct[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<"all" | CategoryKey>("all");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (!error && data) setProducts(data);
+      setLoading(false);
+    }
+    fetchProducts();
+  }, []);
 
   const categoryMap: Record<CategoryKey, string> = {
     laserCutting: t.products.categories.laserCutting,
@@ -121,28 +58,30 @@ export function ProductGallery() {
   const filteredProducts =
     selectedCategory === "all"
       ? products
-      : products.filter((p) => p.categoryKey === selectedCategory);
+      : products.filter((p) => categoryToKey[p.category] === selectedCategory);
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
     setLightboxOpen(true);
   };
 
-  const closeLightbox = () => {
-    setLightboxOpen(false);
-  };
+  const closeLightbox = () => setLightboxOpen(false);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? filteredProducts.length - 1 : prev - 1
-    );
-  };
+  const goToPrevious = () =>
+    setCurrentIndex((prev) => (prev === 0 ? filteredProducts.length - 1 : prev - 1));
 
-  const goToNext = () => {
-    setCurrentIndex((prev) =>
-      prev === filteredProducts.length - 1 ? 0 : prev + 1
+  const goToNext = () =>
+    setCurrentIndex((prev) => (prev === filteredProducts.length - 1 ? 0 : prev + 1));
+
+  if (loading) {
+    return (
+      <section className="pb-24 lg:pb-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center py-24">
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        </div>
+      </section>
     );
-  };
+  }
 
   return (
     <section className="pb-24 lg:pb-32">
@@ -165,36 +104,40 @@ export function ProductGallery() {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product, index) => (
-            <div
-              key={product.id}
-              className="group relative rounded-xl overflow-hidden bg-gradient-to-br from-card to-card/80 border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer"
-              onClick={() => openLightbox(index)}
-            >
-              <div className="aspect-[4/3] relative overflow-hidden">
-                <Image
-                  src={product.image}
-                  alt={product.titleKey}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-24 text-muted-foreground">
+            No products found in this category.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((product, index) => (
+              <div
+                key={product.id}
+                className="group relative rounded-xl overflow-hidden bg-gradient-to-br from-card to-card/80 border border-border hover:border-primary/50 transition-all duration-300 cursor-pointer"
+                onClick={() => openLightbox(index)}
+              >
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  <Image
+                    src={product.image_url}
+                    alt={product.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <span className="text-xs font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-wider">
+                    {categoryMap[categoryToKey[product.category]] || product.category}
+                  </span>
+                  <h3 className="mt-2 text-lg font-semibold text-foreground">{product.title}</h3>
+                </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <span className="text-xs font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-wider">
-                  {categoryMap[product.categoryKey as CategoryKey]}
-                </span>
-                <h3 className="mt-2 text-lg font-semibold text-foreground">
-                  {product.titleKey}
-                </h3>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Lightbox */}
-        {lightboxOpen && (
+        {lightboxOpen && filteredProducts[currentIndex] && (
           <div className="fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex items-center justify-center">
             <button
               onClick={closeLightbox}
@@ -224,43 +167,23 @@ export function ProductGallery() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="aspect-[4/3] relative rounded-xl overflow-hidden border border-primary/20">
                   <Image
-                    src={filteredProducts[currentIndex].image}
-                    alt={filteredProducts[currentIndex].titleKey}
+                    src={filteredProducts[currentIndex].image_url}
+                    alt={filteredProducts[currentIndex].title}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div className="flex flex-col justify-center">
                   <span className="text-sm font-medium bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-wider">
-                    {categoryMap[filteredProducts[currentIndex].categoryKey as CategoryKey]}
+                    {categoryMap[categoryToKey[filteredProducts[currentIndex].category]] ||
+                      filteredProducts[currentIndex].category}
                   </span>
                   <h2 className="mt-2 text-2xl lg:text-3xl font-bold text-foreground">
-                    {filteredProducts[currentIndex].titleKey}
+                    {filteredProducts[currentIndex].title}
                   </h2>
                   <p className="mt-4 text-muted-foreground leading-relaxed">
                     {filteredProducts[currentIndex].description}
                   </p>
-
-                  <div className="mt-6 p-4 rounded-xl bg-gradient-to-br from-card to-primary/5 border border-primary/20">
-                    <h4 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
-                      {t.products.specs.material}
-                    </h4>
-                    <dl className="grid grid-cols-2 gap-3">
-                      {Object.entries(
-                        filteredProducts[currentIndex].specs
-                      ).map(([key, value]) => (
-                        <div key={key}>
-                          <dt className="text-xs text-muted-foreground capitalize">
-                            {key.replace(/([A-Z])/g, " $1").trim()}
-                          </dt>
-                          <dd className="text-sm font-medium text-foreground">
-                            {value}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                  </div>
-
                   <Button
                     asChild
                     className="mt-6 bg-gradient-to-r from-primary to-accent text-primary-foreground hover:opacity-90 transition-opacity"
