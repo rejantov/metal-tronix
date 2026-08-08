@@ -21,8 +21,6 @@ export interface Quote {
   read: boolean
 }
 
-<<<<<<< HEAD
-=======
 export interface CompanySettings {
   id: number
   name: string
@@ -71,7 +69,6 @@ export interface DbReceiptItem {
   tax_rate: number
 }
 
->>>>>>> feature/our_story
 export interface Partner {
   id: string
   name: string

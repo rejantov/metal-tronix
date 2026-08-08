@@ -48,13 +48,6 @@ create table if not exists partners (
 );
 
 
-<<<<<<< HEAD
--- ─── ROW LEVEL SECURITY ──────────────────────────────────────
-
-alter table products enable row level security;
-alter table quotes   enable row level security;
-alter table partners enable row level security;
-=======
 -- Company settings — the "FROM" side of every receipt. Single row, id is always 1.
 create table if not exists company_settings (
   id          integer primary key default 1 check (id = 1),
@@ -142,7 +135,6 @@ create policy "company_settings_auth_read"
 
 create policy "company_settings_auth_update"
   on company_settings for update using (auth.role() = 'authenticated');
->>>>>>> feature/our_story
 
 -- Products: anyone can read; only authenticated users (admins) can write
 create policy "products_public_read"
@@ -184,10 +176,7 @@ create policy "partners_auth_delete"
 --
 --   Bucket name: product-images   (public: yes)
 --   Bucket name: partner-logos    (public: yes)
-<<<<<<< HEAD
-=======
 --   Bucket name: company-assets   (public: yes)   ← receipt logo
->>>>>>> feature/our_story
 --
 -- Then add these storage policies (Storage → Policies):
 --
@@ -196,12 +185,9 @@ create policy "partners_auth_delete"
 --
 -- partner-logos: allow public SELECT
 -- partner-logos: allow authenticated INSERT / DELETE
-<<<<<<< HEAD
-=======
 --
 -- company-assets: allow public SELECT
 -- company-assets: allow authenticated INSERT / DELETE
->>>>>>> feature/our_story
 
 
 -- ─── ADMIN USER ──────────────────────────────────────────────

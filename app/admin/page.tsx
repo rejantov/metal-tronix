@@ -6,15 +6,6 @@ import { supabase } from "@/lib/supabase";
 import { QuoteInbox } from "@/components/admin/quote-inbox";
 import { ProductManager } from "@/components/admin/product-manager";
 import { PartnerManager } from "@/components/admin/partner-manager";
-<<<<<<< HEAD
-
-type Tab = "quotes" | "products" | "partners";
-
-const tabs: Array<{ key: Tab; label: string }> = [
-  { key: "quotes", label: "Quote Inbox" },
-  { key: "products", label: "Product Manager" },
-  { key: "partners", label: "Partner Manager" },
-=======
 import { ReceiptManager } from "@/components/admin/receipt-manager";
 import { CompanySettingsManager } from "@/components/admin/company-settings-manager";
 
@@ -26,7 +17,6 @@ const tabs: Array<{ key: Tab; label: string }> = [
   { key: "products", label: "Product Manager" },
   { key: "partners", label: "Partner Manager" },
   { key: "settings", label: "Settings" },
->>>>>>> feature/our_story
 ];
 
 export default function AdminPage() {
@@ -35,21 +25,13 @@ export default function AdminPage() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-<<<<<<< HEAD
-    router.push("/admin/login");
-=======
     router.replace("/");
->>>>>>> feature/our_story
   };
 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-<<<<<<< HEAD
-      <header className="border-b border-border bg-card sticky top-0 z-10">
-=======
       <header className="print-hide border-b border-border bg-card sticky top-0 z-10">
->>>>>>> feature/our_story
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="font-bold text-foreground">Metal Tronix</span>
@@ -67,11 +49,7 @@ export default function AdminPage() {
       </header>
 
       {/* Tab Navigation */}
-<<<<<<< HEAD
-      <div className="border-b border-border bg-card/50">
-=======
       <div className="print-hide border-b border-border bg-card/50">
->>>>>>> feature/our_story
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex">
             {tabs.map((tab) => (
@@ -94,15 +72,10 @@ export default function AdminPage() {
       {/* Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeTab === "quotes" && <QuoteInbox />}
-<<<<<<< HEAD
-        {activeTab === "products" && <ProductManager />}
-        {activeTab === "partners" && <PartnerManager />}
-=======
         {activeTab === "receipts" && <ReceiptManager />}
         {activeTab === "products" && <ProductManager />}
         {activeTab === "partners" && <PartnerManager />}
         {activeTab === "settings" && <CompanySettingsManager />}
->>>>>>> feature/our_story
       </main>
     </div>
   );
